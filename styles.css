@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: poppins, sans-serif;
+}
+body {
+    height: 100vh;
+    width: 100%;
+    color: #fff;
+    font-size: 16px;
+    background: linear-gradient(135deg, #4b367c 0%, #2b133d 100%);
+}
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    backdrop-filter: blur(50px);
+    padding: 0 20px;
+}
+.text-logo {
+    animation: slideRight 1.3s linear forwards;
+    background: linear-gradient(to right, #a18cd1, #fbc2eb);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.logo {
+    display: flex;
+    font-size: 20px;
+    color: #000;
+    position: relative;
+    margin-left: 35px;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateX(-20px) scale(1.1);
+    animation: slideRight 1s linear forwards;
+    transition: color 0.3s, transform 0.3s;
+}
+@keyframes slideRight {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.logo:hover {
+    color: #222;
+}
+.logo i {
+    font-size: 35px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -38px;
+    color: white;
+}
+#home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: slideDown 0.9s linear forwards;
+    transition: 0.9s linear;
+}
+
+#about {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: slideDown 1.2s linear forwards;
+    transition: 1.2s linear;
+}
+
+#contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: slideDown 1.5s linear forwards;
+    transition: 1.5s linear;
+}
+
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+    font-size: 18px;
+}
+.nav-menu ul a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+    position: relative;
+}
+.nav-menu ul a::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    bottom: -5px;
+    left: 0;
+    transition: width 0.5s ease;
+}
+.nav-menu ul a:hover::before {
+    width: 100%;
+}
+.nav-menu ul a:hover {
+    transform: scale(1.1);
+    color: #adadad;
+}
+
+.nav-menu ul a.active {
+    color: #222;
+}
+
+#login-link {
+    text-decoration: none;
+    color: #fff;
+    font-size: 17px;
+    margin-right: 10px;
+    text-decoration: underline;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: slideDown 1.8s linear forwards;
+}
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.signup-btn {
+    padding: 10px 20px;
+    background: linear-gradient(to right, #a18cd1, #fbc2eb);
+    border: none;
+    border-radius: 20px;
+    outline: none;
+}
+.signup-btn:hover {
+    background: #fff;
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.3s linear;
+}
