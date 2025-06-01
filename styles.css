@@ -19,7 +19,7 @@ body {
     align-items: center;
     background: transparent;
     backdrop-filter: blur(50px);
-    padding: 0 20px;
+    padding: 0 40px;
 }
 .text-logo {
     animation: slideRight 1.3s linear forwards;
@@ -122,23 +122,21 @@ body {
     width: 100%;
 }
 .nav-menu ul a:hover {
-    transform: scale(1.1);
     color: #adadad;
 }
 
-.nav-menu ul a.active {
+.nav-menu ul a:hover::before:active {
     color: #222;
 }
 
-#login-link {
+.login-link {
     text-decoration: none;
     color: #fff;
     font-size: 17px;
     margin-right: 10px;
-    text-decoration: underline;
     opacity: 0;
-    transform: translateY(-20px);
-    animation: slideDown 1.8s linear forwards;
+    animation: fadein 2s linear forwards;
+    transition: 2s linear;
 }
 @keyframes slideDown {
     from {
@@ -152,15 +150,31 @@ body {
 }
 
 .signup-btn {
-    padding: 10px 20px;
+    padding: 10px 45px;
+    color: #fff;
     background: linear-gradient(to right, #a18cd1, #fbc2eb);
     border: none;
     border-radius: 20px;
     outline: none;
+    animation: fadein 2s linear forwards;
+    transition: 0.5s linear;
 }
 .signup-btn:hover {
     background: #fff;
+    color: #000;
     cursor: pointer;
     transform: scale(1.05);
-    transition: 0.3s linear;
+    transition: 0.3s ease;
+}
+.signup-btn:active {
+    transform: scale(0.95);
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
