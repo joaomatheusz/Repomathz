@@ -13,6 +13,8 @@ body {
     font-size: 16px;
     background: linear-gradient(135deg, #4b367c 0%, #2b133d 100%);
 }
+ 
+/* Div envoltória styles */
 .header-container {
     display: flex;
     justify-content: space-between;
@@ -21,14 +23,14 @@ body {
     backdrop-filter: blur(50px);
     padding: 0 40px;
 }
+/*texto da logo styles*/
 .text-logo {
-    animation: slideRight 1.3s linear forwards;
     background: linear-gradient(to right, #a18cd1, #fbc2eb);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
 }
-
+/*logo styles*/
 .logo {
     display: flex;
     font-size: 20px;
@@ -36,25 +38,13 @@ body {
     position: relative;
     margin-left: 35px;
     cursor: pointer;
-    opacity: 0;
-    transform: translateX(-20px) scale(1.1);
-    animation: slideRight 1s linear forwards;
-    transition: color 0.3s, transform 0.3s;
-}
-@keyframes slideRight {
-    from {
-        transform: translateX(-20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
 }
 
+/*hover da logo*/
 .logo:hover {
     color: #222;
 }
+/*style do ícone da logo*/
 .logo i {
     font-size: 35px;
     position: absolute;
@@ -63,51 +53,42 @@ body {
     left: -38px;
     color: white;
 }
+/*style do menu de navegação*/
 #home {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-grow: 1;
-    opacity: 0;
-    transform: translateY(-20px);
-    animation: slideDown 0.9s linear forwards;
-    transition: 0.9s linear;
 }
-
+/*style do menu de navegação*/
 #about {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-grow: 1;
-    opacity: 0;
-    transform: translateY(-20px);
-    animation: slideDown 1.2s linear forwards;
-    transition: 1.2s linear;
 }
-
+/*style do menu de navegação*/
 #contact {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-grow: 1;
-    opacity: 0;
-    transform: translateY(-20px);
-    animation: slideDown 1.5s linear forwards;
-    transition: 1.5s linear;
 }
-
+/*style da lista do menu de navegação*/
 .nav-menu ul {
     display: flex;
     list-style: none;
     gap: 40px;
     font-size: 18px;
 }
+/*style dos links do menu de navegação*/
 .nav-menu ul a {
     text-decoration: none;
     color: #fff;
     transition: color 0.3s ease;
     position: relative;
 }
+/*before do link do menu de navegação(o efeito de underline)*/
 .nav-menu ul a::before {
     content: '';
     position: absolute;
@@ -118,37 +99,28 @@ body {
     left: 0;
     transition: width 0.5s ease;
 }
+/*complemento do before do link do menu de navegação*/
 .nav-menu ul a:hover::before {
     width: 100%;
 }
+/*hover do link do menu de navegação*/
 .nav-menu ul a:hover {
     color: #adadad;
 }
-
+/*active do link do menu de navegação*/
 .nav-menu ul a:hover::before:active {
     color: #222;
 }
-
+/*style do botão de login*/
 .login-link {
     text-decoration: none;
     color: #fff;
     font-size: 17px;
     margin-right: 10px;
-    opacity: 0;
-    animation: fadein 2s linear forwards;
-    transition: 2s linear;
 }
-@keyframes slideDown {
-    from {
-        transform: translateY(-20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
+/*config da animação slideDown*/
 
+/*style do botão de signup*/
 .signup-btn {
     padding: 10px 45px;
     color: #fff;
@@ -156,9 +128,8 @@ body {
     border: none;
     border-radius: 20px;
     outline: none;
-    animation: fadein 2s linear forwards;
-    transition: 0.5s linear;
 }
+/*hover e active do botão de signup*/
 .signup-btn:hover {
     background: #fff;
     color: #000;
@@ -169,12 +140,4 @@ body {
 .signup-btn:active {
     transform: scale(0.95);
 }
-
-@keyframes fadein {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
+/*configuração da animação fadein*/
