@@ -1,36 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Website Css</title>
 </head>
 <body>
     <header>
-        <div class="header-container">
-            <div data-aos="fade-down" data-aos-duration="1500" class="logo">
-                <i class='bx bxl-visual-studio icon'></i>
-                <h1 class="text-logo">Math</h1>
-            </div>
-            <nav class="nav-menu">
+        <div class="logo-container">
+            <img src="images/Gemini_Generated_Image_82z0t582z0t582z0-Photoroom.png" height="75px">
+        </div>
+        <div class="nav-container">
+            <nav>
                 <ul>
-                    <li><a data-aos="fade-down" data-aos-duration="1500" href="#home" class="nav-btn" id="home">Home</a></li>
-                    <li><a data-aos="fade-down" data-aos-duration="2000" href="#about" class="nav-btn" id="about">About</a></li>
-                    <li><a data-aos="fade-down" data-aos-duration="2500" href="#contact" class="nav-btn" id="contact">Contact</a></li>
+                    <li><a href="#Home">Home</a></li>
+                    <li><a href="#Product">Product</a></li>
+                    <li><a href="#Feature">Feature</a></li>
+                    <li><a href="#Pricing">Pricing</a></li>
                 </ul>
             </nav>
-            <div data-aos="fade-down" data-aos-duration="2500" class="links">
-                <a data-aos="fade-down" data-aos-duration="2500" href="#login-page" class="login-link">Login</a>
-                <a data-aos="fade-down" data-aos-duration="3000" href="#signup"><button class="signup-btn">Sign Up</button></a>
-            </div>
+        </div>
+        <div class="btn-container">
+            <a href="#signup" id="signup">Sign Up</a>
+            <a href="#Login" id="login"><button>Login</button></a>
         </div>
     </header>
-      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
+    
+    <main>
+        
+        <section class="primary">
+            <p class="bss">BEST SOFTWARE SERVICE</p>
+            <div class="title-container">
+                <h1>Create & <br> analytics all <br> necessaries</h1>
+                <p>Manage your all documents transparent, <br> safe and secure. We provide world's</p>
+                <div class="cta-container">
+                    <a href="#get"><button>Get Started</button></a>
+                    <a href="#explore"><button>Explore More</button></a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="image-container">
+            <h5>We are trusted by</h5>
+            <div class="images">
+                <img src="#" alt="netflix">
+                <img src="#" alt="slack">
+                <img src="#" alt="CONVERSE">
+                <img src="#" alt="SHAZAM">
+                <img src="#" alt="PRADA">
+            </div>
+        </section>
+        
+        <section class="features-container">
+            
+            <p>FEATURES</p>
+            <h2>Most essential features</h2>
+            <p>Lorem ipsum dolor sit amet consectetur. Neque vel orci eget rhoncus <br> pretium. Proin ultrices elementum aliquet</p>
+            
+            <div class="grafics-container">
+                <div class="flexibility">
+                    <div class="flexibility-icon-text">
+                        <p>Service Godown</p>
+                    </div>
+                    <p>Flexibility</p>
+                    <img src="#" alt="troca de dados">
+                </div>
+                <div class="vast-storage">
+                    <p>Vast Storage</p>
+                    <button>Working</button>
+                    <button>Remaining</button>
+                </div>
+                <div class="latest-analytics">
+                    <p>Latest Analytics</p>
+                    <h6>Growth rate - <span>+5,50%</span></h6>
+                    <img src="#" alt="gráfico de crescimento">
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
