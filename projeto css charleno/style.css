@@ -33,7 +33,7 @@ header {
 
 .nav-container nav ul {
     display: flex;
-    gap: 32px;
+    gap: 20px;
     justify-content: center;
     align-items: center;
     list-style: none;    
@@ -43,37 +43,13 @@ header {
     text-decoration: none;
     color: #222;
     font-weight: 500;
-    position: relative;
-}
-
-.nav-container nav ul li a:hover {
-    color: rgb(142, 65, 214);
-}
-
-.nav-container nav ul li a::before {
-    content: '';
-    position: absolute;
-    right: 15px;
-    left: 15px;
-    border-radius: 10px;
-    bottom: -2px;
-    transform: scaleX(0);
-    height: 4px;
-    color: blueviolet;
-    background-color: rgb(142, 65, 214);
-    transform-origin: left;
-    transition: transform 0.3s ease;
-}
-
-.nav-container nav ul li a:hover::before{
-    transform: scaleX(1);
 }
 
 .btn-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 27px;
+    gap: 35px;
 }
 #signup {
     text-decoration: none;
@@ -85,35 +61,4 @@ header {
     text-decoration: underline;
     transform: scale(1.1);
     transition: 0.2s ease;
-}
-
-#login {
-    padding: 10px 35px;
-    border-radius: 20px;
-    background: linear-gradient(#333, black);
-    color: white;
-    border: none;
-}
-#login:hover {
-    transform: scale(1.1);
-    transition: transform 0.3s ease;
-}
-#login:active {
-    transform: scale(0.98);
-    transition: transform 0.3s ease;
-}
-
-.primary {
-    display: flex;
-    flex-direction: column;
-}
-
-.bss {
-    box-shadow: 2px 2px 2px #c0c0c0;
-    padding: 7px 15px;
-    width: 215px;
-    color: blueviolet;
-    font-weight: 500;
-    border-radius: 20px;
-    font-size: 15px;
 }
