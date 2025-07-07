@@ -327,7 +327,7 @@ main {
 .content-secundary h1 {
     font-size: 4.5rem;
     line-height: 4.5rem;
-    letter-spacing: 2px;
+    letter-spacing: 0.125rem;
     color: #14183E;
     font-weight: 900;
     margin-bottom: 3rem;
@@ -525,8 +525,8 @@ main {
 
 .div-img-3 {
     background-color: #fff;
-    width: 515px;
-    height: 520px;
+    width: 32.188rem;
+    height: 32.5rem;
     border-radius: 40px;
     display: flex;
     flex-direction: column;
@@ -649,8 +649,8 @@ main {
     color: black;
 }
 .barra {
-  width: 200px;
-  height: 8px;
+  width: 12.5rem;
+  height: 0.5rem;
   background: linear-gradient(90deg, #8B5CF6 0%, #7C3AED 40%, #F5F5F5 60%);
   border-radius: 4px;
 }
@@ -662,8 +662,8 @@ footer {
     align-self: center;
     text-align: center;
     justify-content: center;
-    width: 1570px;
-    height: 407px;
+    width: 98.125rem;
+    height: 25.438rem;
     border-radius: 30px;
     background-image: url(Imgs/Fundo\ Footer\(1570\ x\ 407\ px\).svg);
     background-repeat: no-repeat;
@@ -746,5 +746,159 @@ footer form {
 
 
 
+@media (max-width: 1366px) {
+    html {
+        font-size: 90%; 
+    }
 
+    header {
+        gap: 10rem;
+        padding: 2rem 2rem 1rem 2rem;
+    }
+
+    #logo-img {
+        width: 9rem;
+        height: 9rem;
+    }
+
+
+    .img-primary img{
+
+        height: 40rem;
+        width: 40rem;
+
+    } 
+
+    .content-primary {
+        padding-top: 5rem;
+        padding-left: 1rem;
+    }
+
+    .content-primary h1 {
+        font-size: 5rem;
+        line-height: 5.5rem;
+    }
+
+    .content-primary p {
+        font-size: 1.1rem;
+    }
+
+    .card{
+        padding-bottom: 2rem;
+    }
+
+    .engre p{
+
+        text-wrap: nowrap;
+        
+
+    }
+
+    
+    .cards-container,
+    .cards-container-2,
+    .cards-container-3 {
+        gap: 1.5rem;
+        padding: 2rem 1rem;
+    }
+
+    .cards-container-2{
+        gap: 2.5rem;
+    }
+
+    .card-2{
+        height: 5rem;
+    }
+    
+    .coliseu {
+        height: 18rem;
+    }
+    
+
+    .card,
+    .card-2-item {
+        width: 18rem;
+        height: auto;
+    }
+    .card-2-item p {
+        padding-bottom: 2.5rem;
+    }
+
+    .div-img-3 {
+        width: 26rem;
+        height: auto;
+        margin-left: 4rem;
+        transform: translateY(20px);
+    }
+
+    .div-img3-absolute {
+        left: 58.6%;
+        top: 57%;
+        padding: 1rem;
+    }
+    .img-3-content-icons {
+        gap: 0.8rem;
+    }
+    .MulherEuropa{
+
+        width: 22rem;
+
+    }
+
+    .content-four h1 {
+        font-size: 3.2rem;
+    }
+
+    .content-four h3 {
+        font-size: 1.2rem;
+    }
+
+    footer {
+        width: 90%;
+        padding: 2rem;
+        background-size: cover;
+        background-position: center;
+        border-radius: 0;
+        border-top-left-radius: 60px;
+        border-top-right-radius: 60px;
+    }
+
+    .footer-content {
+        gap: 2rem;
+    }
+
+    footer h2 {
+        font-size: 2.5rem;
+    }
+
+    footer form input {
+        padding: 1rem 5rem;
+        font-size: 1.2rem;
+    }
+
+    .submit {
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        margin-left: 1rem;
+    }
+
+    .send-icon-gradient {
+        width: 4.5rem;
+        height: 4.5rem;
+        font-size: 1.5rem;
+        left: 95.8%;
+        top: -1%;
+        transform: translateY(-0.8rem);
+    }
+
+    #email{
+
+        margin-right: 6rem ;
+
+    }
+
+    .send-icon-gradient i {
+        font-size: 2.5rem;
+    }
+}
 
