@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Batalha de Magos</title>
+  <style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #1a1a2e;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    overflow: hidden;
+  }
+
+  .info {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .level {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .health {
+    display: flex;
+    gap: 40px;
+    margin-top: 10px;
+  }
+
+  .bar {
+    width: 150px;
+    height: 20px;
+    border: 2px solid white;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    transition: width 0.3s;
+  }
+
+  .hero .bar-fill { background: #4CAF50; }
+  .villain .bar-fill { background: #F44336; }
+
+  .battlefield {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 800px;
+  }
+
+  .character {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 120px;
+  }
+
+  .name {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+
+  .rect {
+    width: 80px;
+    height: 200px;
+    border-radius: 10px;
+    border: 3px solid white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-rect { background: #2196F3; }
+  .villain-rect { background: #9C27B0; }
+
+  .game-controls {
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background: #FFC107;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .sequence-display {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #FFEB3B;
+  }
+
+  .projectile {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: #FFEB3B;
+    border-radius: 50%;
+    box-shadow: 0 0 8px white;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+
+  <div class="info">
+    <div class="level">Nível: <span id="level">1</span></div>
+    <div class="health">
+      <div class="hero">
+        <div class="name">Herói</div>
+        <div class="bar"><div class="bar-fill" id="heroHealth" style="width: 100%"></div></div>
+      </div>
+      <div class="villain">
+        <div class="name">Vilão</div>
+        <div class="bar"><div class="bar-fill" id="villainHealth" style="width: 100%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="battlefield">
+    <!-- Herói -->
+    <div class="character">
+      <div class="name">🧙‍♂</div>
+      <div class="rect hero-rect" id="hero"></div>
+    </div>
+
+    <!-- Vilão -->
+    <div class="character">
+      <div class="name" id="villainName">Vilão Nível 1</div>
+      <div class="rect villain-rect" id="villain"></div>
+    </div>
+  </div>
+
+  <div class="game-controls">
+    <button id="startBtn">Iniciar Batalha</button>
+  </div>
+
+  <div class="sequence-display">
+    Memorize a sequência...
+  </div>
+
+  <!-- Botões de cores -->
+  <div id="colorButtons" style="margin-top: 30px; display: flex; gap: 10px;">
+    <div class="color-btn" data-id="0" style="background:red; width:60px; height:60px; border-radius:50%; cursor:pointer;"></div>
+    <div class="color-btn" data-id="1" style="background:blue; width:60px; height:60px; border-radius:50%; cursor:pointer;"></div>
+    <div class="color-btn" data-id="2" style="background:yellow; width:60px; height:60px; border-radius:50%; cursor:pointer;"></div>
+    <div class="color-btn" data-id="3" style="background:green; width:60px; height:60px; border-radius:50%; cursor:pointer;"></div>
+  </div>
+
+  <script>
+    // Elementos
+    const startBtn = document.getElementById('startBtn');
+    const levelDisplay = document.getElementById('level');
+    const villainName = document.getElementById('villainName');
+    const heroHealth = document.getElementById('heroHealth');
+    const villainHealth = document.getElementById('villainHealth');
+    const hero = document.getElementById('hero');
+    const villain = document.getElementById('villain');
+    const sequenceDisplay = document.querySelector('.sequence-display');
+    const colorButtons = document.querySelectorAll('.color-btn');
+
+    // Cores das bolas mágicas
+    const colors = ['red', 'blue', 'yellow', 'green'];
+
+    // Estado do jogo
+    let level = 1;
+    let sequence = [];
+    let playerIndex = 0;
+    let canClick = false;
+    let heroLives = 2;
+    let villainLives = 2;
+
+    // Nomes dos vilões por nível
+    const villainNames = [
+      "Bruxo Sombrio", 
+      "Feiticeiro do Caos", 
+      "Rei das Chamas", 
+      "Mago do Vácuo", 
+      "Senhor do Caos Final"
+    ];
+
+    // Função: reiniciar vidas visuais
+    function updateHealth() {
+      heroHealth.style.width = (heroLives * 50) + '%';
+      villainHealth.style.width = (villainLives * 50) + '%';
+    }
+
+    // Função: adicionar à sequência
+    function addToSequence() {
+      const rand = Math.floor(Math.random() * 4);
+      sequence.push(rand);
+    }
+
+    // Função: piscar botão
+    function flashButton(index) {
+      const btn = colorButtons[index];
+      btn.style.transform = 'scale(0.9)';
+      btn.style.boxShadow = '0 0 15px white';
+      setTimeout(() => {
+        btn.style.transform = '';
+        btn.style.boxShadow = '';
+      }, 300);
+    }
+
+    // Função: atirar bola do herói ao vilão
+    function shootHeroProjectile() {
+      const projectile = document.createElement('div');
+      projectile.classList.add('projectile');
+      projectile.style.backgroundColor = colors[sequence[playerIndex - 1]];
+      
+      // Posição inicial: centro do herói
+      const rect = hero.getBoundingClientRect();
+      const battle = document.querySelector('.battlefield').getBoundingClientRect();
+      
+      projectile.style.left = (rect.width / 2 - 9) + 'px';
+      projectile.style.top = (rect.height / 2 - 9) + 'px';
+      
+      hero.appendChild(projectile);
+
+      // Animação até o vilão
+      let x = 0;
+      const move = setInterval(() => {
+        x += 5;
+        projectile.style.transform = translateX(`${x}px`);
+        if (x > 500) {
+          clearInterval(move);
+          projectile.remove();
+          // Acertou vilão!
+          if (villainLives > 0) {
+            villainLives--;
+            if (villainLives <= 0) {
+              nextLevel();
+            } else {
+              updateHealth();
+            }
+          }
+        }
+      }, 30);
+    }
+
+    // Função: vilão atira no herói
+    function shootVillainProjectile() {
+      const projectile = document.createElement('div');
+      projectile.classList.add('projectile');
+      projectile.style.backgroundColor = 'purple';
+      
+      const rect = villain.getBoundingClientRect();
+      projectile.style.left = (rect.width / 2 - 9) + 'px';
+      projectile.style.top = (rect.height / 2 - 9) + 'px';
+      
+      villain.appendChild(projectile);
+
+      let x = 0;
+      const move = setInterval(() => {
+        x -= 5;
+        projectile.style.transform = translateX(`${x}px`);
+        if (x < -500) {
+          clearInterval(move);
+          projectile.remove();
+          // Acertou herói!
+          if (heroLives > 0) {
+            heroLives--;
+            updateHealth();
+            if (heroLives <= 0) {
+              endGame(false);
+            }
+          }
+        }
+      }, 30);
+    }
+
+    // Função: próximo nível
+    function nextLevel() {
+      setTimeout(() => {
+        level++;
+        levelDisplay.textContent = level;
+        sequence = [];
+        playerIndex = 0;
+        canClick = false;
+
+        // Atualiza nome do vilão (cíclico se passar do array)
+        villainName.textContent = villainNames[(level - 1) % villainNames.length];
+
+        // Aumenta dificuldade: sequência começa com nível de tamanho
+        for (let i = 0; i < level; i++) {
+          addToSequence();
+        }
+
+        sequenceDisplay.textContent = `Nível ${level}: Memorize a sequência!`;
+        playSequence();
+      }, 1000);
+    }
+
+    // Função: tocar sequência
+    function playSequence() {
+      canClick = false;
+      let i = 0;
+      const delay = Math.max(600 - level * 30, 300); // Aumenta velocidade com o nível
+
+      const interval = setInterval(() => {
+        const index = sequence[i];
+        flashButton(index);
+        i++;
+        if (i >= sequence.length) {
+          clearInterval(interval);
+          setTimeout(() => {
+            canClick = true;
+            sequenceDisplay.textContent = "Sua vez! Repita a sequência.";
+          }, 500);
+        }
+      }, delay);
+    }
+
+    // Função: erro do jogador
+    function playerWrong() {
+      canClick = false;
+      sequenceDisplay.textContent = "Erro! O vilão contra-ataca!";
+      shootVillainProjectile();
+    }
+
+    // Função: fim do jogo
+    function endGame(victory) {
+      canClick = false;
+      const msg = victory 
+        ? `🎉 Você venceu! O reino está salvo! Nível alcançado: ${level}` 
+        : `💀 Você foi derrotado! O vilão dominou tudo!`;
+      setTimeout(() => alert(msg), 500);
+      startBtn.textContent = "Jogar Novamente";
+      startBtn.style.display = "block";
+    }
+
+    // Iniciar batalha
+    function startBattle() {
+      // Reset
+      level = 1;
+      heroLives = 2;
+      villainLives = 2;
+      sequence = [];
+      levelDisplay.textContent = level;
+      villainName.textContent = villainNames[0];
+      sequenceDisplay.textContent = "Preparando batalha...";
+      startBtn.style.display = "none";
+
+      // Adiciona sequência inicial
+      for (let i = 0; i < level; i++) {
+        addToSequence();
+      }
+
+      updateHealth();
+      playSequence();
+    }
+
+    // Eventos dos botões de cor
+    colorButtons.forEach((btn, index) => {
+      btn.addEventListener('click', () => {
+        if (!canClick) return;
+
+        flashButton(index);
+
+        if (sequence[playerIndex] === index) {
+          playerIndex++;
+          if (playerIndex === sequence.length) {
+            // Acertou tudo!
+            sequenceDisplay.textContent = "Acertou! Atacando vilão!";
+            shootHeroProjectile();
+            playerIndex = 0;
+            // Se o vilão morrer com esse ataque, vai para próximo nível
+            // (já tratado em shootHeroProjectile)
+          }
+        } else {
+          playerWrong();
+        }
+      });
+    });
+
+    // Botão de início
+    startBtn.addEventListener('click', startBattle);
+  </script>
+</body>
+</html>

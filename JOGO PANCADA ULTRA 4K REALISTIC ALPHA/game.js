@@ -11,7 +11,7 @@ canvas.height = innerHeight;
 
 const mouse = { x: canvas.width / 2, y: canvas.height / 2 };
 
-// --- CLASSES DO JOGO ---
+// --- CLASSES ---
 class Player {
     constructor(x, y) {
         this.x = x;
@@ -65,41 +65,127 @@ class Player {
 }
 
 class Projectile {
-    constructor(x, y, radius, color, velocity) { this.x = x; this.y = y; this.radius = radius; this.color = color; this.velocity = velocity; }
-    draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false); ctx.fillStyle = this.color; ctx.fill(); }
-    update() { this.draw(); this.x += this.velocity.x; this.y += this.velocity.y; }
+    constructor(x, y, radius, color, velocity) { 
+        this.x = x; this.y = y; this.radius = radius; 
+        this.color = color; this.velocity = velocity; 
+    }
+    draw() { 
+        ctx.beginPath(); 
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false); 
+        ctx.fillStyle = this.color; ctx.fill(); 
+    }
+    update() { 
+        this.draw(); this.x += this.velocity.x; 
+        this.y += this.velocity.y; 
+    }
 }
 
 class Enemy {
-    constructor(x, y, radius, color, velocity) { this.x = x; this.y = y; this.radius = radius; this.color = color; this.velocity = velocity; }
-    draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false); ctx.fillStyle = this.color; ctx.fill(); }
-    update() { this.draw(); this.x += this.velocity.x; this.y += this.velocity.y; }
+    constructor(x, y, radius, color, velocity) { 
+        this.x = x; this.y = y; this.radius = radius; 
+        this.color = color; this.velocity = velocity; 
+    }
+    draw() { 
+        ctx.beginPath(); 
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false); 
+        ctx.fillStyle = this.color; 
+        ctx.fill(); 
+    }
+
+    update() { 
+        this.draw(); 
+        this.x += this.velocity.x; 
+        this.y += this.velocity.y; }
 }
 
 class PowerUp {
-    constructor(x, y, velocity) { this.x = x; this.y = y; this.velocity = velocity; this.radius = 8; this.color = '#2ecc71'; }
-    draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false); ctx.fillStyle = this.color; ctx.fill(); ctx.font = '10px Arial'; ctx.fillStyle = 'white'; ctx.fillText('3X', this.x - 5, this.y + 3); }
-    update() { this.draw(); this.x += this.velocity.x; this.y += this.velocity.y; }
+    constructor(x, y, velocity) { 
+        this.x = x; this.y = y; this.velocity = velocity;
+        this.radius = 8; this.color = '#2ecc71'; 
+    }
+    draw() { 
+        ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+        ctx.fillStyle = this.color; ctx.fill(); ctx.font = '10px Arial'; ctx.fillStyle = 'white';
+        ctx.fillText('3X', this.x - 5, this.y + 3); 
+    }
+
+    update() { 
+        this.draw();
+         this.x += this.velocity.x;
+          this.y += this.velocity.y;
+     }
 }
 
 const friction = 0.99;
 class Particle {
-    constructor(x, y, radius, color, velocity) { this.x = x; this.y = y; this.radius = radius; this.color = color; this.velocity = velocity; this.alpha = 1; }
-    draw() { ctx.save(); ctx.globalAlpha = this.alpha; ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false); ctx.fillStyle = this.color; ctx.fill(); ctx.restore(); }
-    update() { this.draw(); this.velocity.x *= friction; this.velocity.y *= friction; this.x += this.velocity.x; this.y += this.velocity.y; this.alpha -= 0.01; }
+    constructor(x, y, radius, color, velocity) { 
+        this.x = x; this.y = y; this.radius = radius; this.color = color; 
+        this.velocity = velocity; this.alpha = 1; 
+    }
+
+    draw() { 
+        ctx.save(); 
+        ctx.globalAlpha = this.alpha; 
+        ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false); 
+        ctx.fillStyle = this.color; ctx.fill(); ctx.restore(); 
+    }
+
+    update() { 
+        this.draw(); 
+        this.velocity.x *= friction; 
+        this.velocity.y *= friction; 
+        this.x += this.velocity.x; 
+        this.y += this.velocity.y; 
+        this.alpha -= 0.01; }
 }
 
 class EnemyProjectile {
-    constructor(x, y, velocity) { this.x = x; this.y = y; this.radius = 4; this.color = '#e74c3c'; this.velocity = velocity; }
-    draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false); ctx.fillStyle = this.color; ctx.fill(); }
-    update() { this.draw(); this.x += this.velocity.x; this.y += this.velocity.y; }
+    constructor(x, y, velocity) { 
+        this.x = x; 
+        this.y = y; 
+        this.radius = 4; 
+        this.color = '#e74c3c'; 
+        this.velocity = velocity;
+    }
+
+    draw() { 
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false); 
+        ctx.fillStyle = this.color; 
+        ctx.fill(); 
+    }
+
+    update() { 
+        this.draw(); 
+        this.x += this.velocity.x; 
+        this.y += this.velocity.y; 
+    }
 }
 
 class ShootingEnemy {
-    constructor(x, y, velocity) { this.x = x; this.y = y; this.radius = 12; this.color = '#9b59b6'; this.velocity = velocity; this.shootCooldown = Math.random() * 100 + 50; }
-    draw() { ctx.fillStyle = this.color; ctx.fillRect(this.x - this.radius, this.y - this.radius, this.radius * 2, this.radius * 2); }
-    shoot() { const angle = Math.atan2(player.y - this.y, player.x - this.x); const speed = 4; enemyProjectiles.push(new EnemyProjectile(this.x, this.y, { x: Math.cos(angle) * speed, y: Math.sin(angle) * speed })); }
-    update() { this.draw(); this.x += this.velocity.x; this.y += this.velocity.y; this.shootCooldown--; if (this.shootCooldown <= 0) { this.shoot(); this.shootCooldown = 120; } }
+    constructor(x, y, velocity) { 
+        this.x = x; this.y = y; 
+        this.radius = 12; this.color = '#9b59b6'; 
+        this.velocity = velocity; 
+        this.shootCooldown = Math.random() * 100 + 50; 
+    }
+
+    draw() { 
+        ctx.fillStyle = this.color; 
+        ctx.fillRect(this.x - this.radius, this.y - this.radius, this.radius * 2, this.radius * 2); 
+    }
+
+    shoot() { 
+        const angle = Math.atan2(player.y - this.y, player.x - this.x); 
+        const speed = 4; enemyProjectiles.push(new EnemyProjectile(this.x, this.y, { x: Math.cos(angle) * speed, y: Math.sin(angle) * speed })); }
+    
+    update() { 
+        this.draw(); 
+        this.x += this.velocity.x; 
+        this.y += this.velocity.y; 
+        this.shootCooldown--; if (this.shootCooldown <= 0) { 
+            this.shoot(); this.shootCooldown = 120; 
+        } }
 }
 
 class Asteroid {
@@ -144,12 +230,19 @@ let player, projectiles, enemies, particles, asteroids, powerUps, enemyProjectil
 let score, animationId;
 let difficultyLevel, enemySpawnRate, asteroidSpawnRate;
 let spawnEnemiesIntervalId, spawnAsteroidsIntervalId;
-const keys = { w: { pressed: false }, a: { pressed: false }, s: { pressed: false }, d: { pressed: false } };
+const keys = { 
+    w: { pressed: false }, 
+    a: { pressed: false }, 
+    s: { pressed: false }, 
+    d: { pressed: false } 
+};
 
 function init() {
     player = new Player(canvas.width / 2, canvas.height / 2);
     projectiles = []; enemies = []; particles = []; asteroids = []; powerUps = []; enemyProjectiles = [];
-    score = 0; scoreEl.textContent = score; bigScoreEl.textContent = score;
+    score = 0; 
+    scoreEl.textContent = score; 
+    bigScoreEl.textContent = score;
     difficultyLevel = 1;
     enemySpawnRate = 1800;
     asteroidSpawnRate = 2500;
@@ -248,5 +341,10 @@ window.addEventListener('click', () => {
 });
 window.addEventListener('keydown', (event) => { const key = event.key.toLowerCase(); if (key in keys) { keys[key].pressed = true; } });
 window.addEventListener('keyup', (event) => { const key = event.key.toLowerCase(); if (key in keys) { keys[key].pressed = false; } });
-startGameBtn.addEventListener('click', () => { init(); animate(); spawnObjects(); modalEl.style.display = 'none'; });
+startGameBtn.addEventListener('click', () => { 
+    init(); 
+    animate(); 
+    spawnObjects(); 
+    modalEl.style.display = 'none'; 
+});
 window.addEventListener('resize', () => { canvas.width = innerWidth; canvas.height = innerHeight; init(); });
