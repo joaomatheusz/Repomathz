@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <script defer src="iafront.js"></script>
+   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+
+   <header>
+
+      <div id="logo">pi rolas</div>
+
+   </header>
+
+   <main>
+
+      <section id="acoes">onde apareece o codigo</section>
+
+      <section id="prompt">
+
+         <form action="iabeck.py" method="POST" enctype="multipart/form-data">
+
+            <div> 
+
+               <label for="textopromt">  
+
+                  <input type="text" id="textopromt" name="textoprompt">
+
+               </label>
+
+            </div>
+
+            <div>
+
+               <label for="arquivo">
+
+                  <input type="file" id="arquivo" name="arquivo[]" accept="*/*" multiple>
+              
+               </label>
+
+            </div>
+
+            <div id="audios">
+
+               <button><span class="material-icons">mic</button>
+               <button><span  id="audioOuEnter" class="material-icons">graphic_eq</span></button>
+
+            </div>
+
+
+         </form>
+
+      </section>
+
+   </main>
+   
+</body>
+</html>

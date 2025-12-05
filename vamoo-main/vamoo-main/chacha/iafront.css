@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+*{
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+
+html, body{
+
+    display: flex;
+    flex-direction: column;
+    background: #111318;
+    color: #E8ECF8;
+    justify-content: space-between;
+    align-items: center;
+    height: 100dvh;
+    width: 100dvw;
+    overflow: hidden;
+}
+
+header{
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 3px;
+    padding-top: 0.7rem;
+    padding-left: 1.2rem;
+    color: gray;
+}
+
+#logo{
+    width: 40px;
+    background-color: rgb(224, 213, 213);
+    font-size: 2rem; 
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    padding-right: 10px; 
+    font-weight: 800;
+    border-radius: 40px;
+    width: 200px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+    width: 100vw;
+
+
+}
+
+#acoes{
+
+    background: red;
+    height: 100%;
+
+}
+
+
+#prompt{
+
+    display: flex;
+    justify-content: center;
+    align-content: space-between;
+    align-items: center;
+    height: 20%;
+    padding-bottom: 1rem;
+    background-color: blanchedalmond;
+    
+}
+
+#prompt form{
+
+    background: purple;
+    width: 80dvw;
+    border-radius: 10rem;
+    height: 40%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    align-items: center;   
+
+}
+
+
+#prompt label{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#audios{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#audios button{
+
+    height: auto;
+    border: none;
+    margin: none;
+    padding: none;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#textoprompt{
+
+    width: 71.5dvw;
+    height: 4dvh;
+    border: none;
+    background: green;
+
+}
+
+.bx{
+
+    font-size: 1.5rem;
+
+}

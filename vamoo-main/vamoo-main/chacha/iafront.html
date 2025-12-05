@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Pi#olas</title>
+   <script defer src="iafront.js"></script>
+   <link rel="stylesheet" href="iafront.css">
+   <link href='https://cdn.boxicons.com/3.0.6/fonts/basic/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+   <header>
+
+      <div id="logo">pi#olas</div>
+
+   </header>
+
+   <main>
+
+      <section id="acoes">onde aparece o codigo</section>
+
+      <section id="prompt">
+
+         <form action="iabeck.py" method="POST" enctype="multipart/form-data">
+
+            <div>
+
+               <label for="arquivo">
+
+                  <i class="bx  bx-plus"></i>
+                  <input type="file" id="arquivo" style="display: none;" name="arquivo[]" accept="*/*" multiple>
+              
+               </label>
+
+            </div>
+
+            <div> 
+
+               <label for="textoprompt">  
+
+                  <input type="text" id="textoprompt" name="textoprompt">
+
+               </label>
+
+            </div>
+
+            <div id="audios">
+
+               <button><i class="bx  bxs-microphone"></i></button>
+               <button><i id="audioOuEnter" class="bx  bx-microphone"></i></button>
+
+            </div>
+
+
+         </form>
+
+      </section>
+
+   </main>
+   
+</body>
+</html>
