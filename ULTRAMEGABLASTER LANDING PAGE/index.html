@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
     <title>Document</title>
 </head>
 <body>
@@ -11,18 +13,56 @@
         <div>
             <h1>Sim</h1>
         </div>
-        <div>
+        <div class="nav-btn">
             <nav>
-                <a href="#">Home</a>
-                <a href="#">Product</a>
-                <a href="#">How to Use</a>
-                <a href="#">About</a>
+                <ul>
+                    <li><a href="#" class="nav-link">Home</a></li>
+                    <li><a href="#" class="nav-link">Produto</a></li>
+                    <li><p style="color: white;">|</p></li>
+                    <li><a href="#" class="nav-link">Contato</a></li>
+                </ul>
             </nav>
-        </div>
-        <div>
-            <button id="botaogay"><a href="#">Download</a></button>
+
+            <button id="botaogay"><a href="#" class="download">Download</a></button>
         </div>
     </header>
-
+    <main>
+        <div class="div-title">
+            <h1>Gerencie seu negócio em um só lugar</h1>
+            <p>Simplifique operações, visualize seu estoque e gere sua empresa de forma prática</p>
+            <div id="title-button">
+                <a href="#"><button>Começar Agora</button></a>    
+            </div>
+        </div>
+        <div class="div-title-img">
+            <h1 style="color: white;">Imagem</h1>
+            <img src="#" alt="#">
+        </div>
+    </main>
+    <section>
+        <h3>Funções</h3>
+        <div class="div-cards">
+            <div class="card">
+                <i class='bx bx-cog' style='color:#297fff; font-size: 70px;'></i>
+                <h4>Automação</h4>
+                <p>Otimize suas operações</p>
+            </div>
+            <div class="card">
+                <i class='bx bx-line-chart' style='color:#287dfd; font-size: 70px;'  ></i>
+                <h4>Análise</h4>
+                <p>Gere seu estoque de forma eficiente</p>
+            </div>
+            <div class="card">
+                <i class='bx bx-cloud' style='color:#297fff; font-size: 70px;' ></i>
+                <h4>Nuvem Segura</h4>
+                <p>Guarde seus dados com segurança</p>
+            </div>
+            <div class="card">
+                <i class='bx bxs-book-open' style='color:#287dfd; font-size: 70px;' ></i>
+                <h4>Praticidade</h4>
+                <p>Simples de usar e muito intuitivo</p>
+            </div>
+        </div>
+    </section>
 </body>
 </html>

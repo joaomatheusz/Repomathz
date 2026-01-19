@@ -1,33 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: poppins, sans-serif;
 }
 
 body {
     height: 100dvh;
-    width: 100dvw;  
+    background-color: rgb(0, 0, 0); 
 }
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 1.5rem;
+    padding: 1rem 2rem;
 }
 
-nav {
+header h1 {
+    color: white;
+}
+
+.nav-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+}
+
+nav ul {
+    list-style: none;
     gap: 2rem;
     width: 20rem;
     display: flex;
     justify-content: space-between;
 }
 
+nav ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+.nav-link {
+    position: relative;
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    border-radius: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(156, 82, 224);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+    transition: transform 0.3s ease-out;
+}
+
 #botaogay {
-    border-radius: 10px;
+    width: 14rem;
+    height: 2rem;
+    align-items: center;
+    border-radius: 3px;
     outline: none;
-    border: none;
+    border: 2px solid white;
     padding: 20px;
-    background-color: blueviolet;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 16px;
+}
+#botaogay:hover {
+    cursor: pointer;
+    animation: aumenta 0.5s ease forwards;
+}
+@keyframes aumenta {
+    from {scale: 1;}
+    to {scale: 1.05;}
+}
+#botaogay:active {
+    animation: diminui 0.5s ease forwards;
+}
+@keyframes diminui {
+    from {scale: 1;}
+    to {scale: 0.95;}
+}
+
+.download {
+    text-decoration: none;
+    color: white;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 2rem;
+}
+
+.div-title {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+}
+
+.div-title {
+    color: white;
+}
+
+#title-button button {
+    padding: 7px 14px;
+    border-radius: 20px;
+    border: 2px solid white;
+    background-color: transparent;
+    color: white;
+    font-weight: 600;
+}
+
+
+.div-cards {
+    color: white;
+    margin: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: auto;
+    gap: 1rem;
+}
+
+.card {
+    background: rgb(36, 36, 36);
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 30px;
 }
